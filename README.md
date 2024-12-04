@@ -13,6 +13,10 @@ This project demonstrates the development of a full-stack application using **Re
   - [Docker Setup](#docker-setup)
   - [CI/CD with GitHub Actions](#cicd-with-github-actions)
   - [Deployment](#deployment)
+  - [Manual API Testing with `test.http`](#manual-api-testing-with-testhttp)
+    - [How to Use](#how-to-use)
+    - [Location](#location)
+    - [Note](#note)
   - [Project Structure in General](#project-structure-in-general)
   - [Contributing](#contributing)
 
@@ -122,6 +126,26 @@ The app is deployed to **Render** for public access.
 2. Configure build commands:
    - **Backend:** `npm install && npm start`
    - **Frontend:** `npm install && npm run build`
+
+---
+
+## Manual API Testing with `test.http`
+
+A `test.http` file is available for manual testing of the API using the REST Client extension in Visual Studio Code.
+
+### How to Use
+
+1. Install the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension in VS Code.
+2. Open the `manual-tests/test.http` file.
+3. Click the "Send Request" button next to each HTTP request to test the API.
+
+### Location
+
+The `test.http` file is located in the `manual-tests/` directory.
+
+### Note
+
+This file is for manual testing only and is not part of the automated test suite.
 
 ---
 

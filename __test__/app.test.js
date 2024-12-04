@@ -34,13 +34,10 @@ describe("RESTful API Tests", () => {
   });
 
   it("should delete a location", async () => {
-    console.log("locations array" + locations);
     await request(app).post("/api/locations").send({
       latitude: 40.7128,
       longitude: -74.006,
     });
-    console.log("locations array" + JSON.stringify(locations));
-
     const response = await request(app).delete("/api/locations/1");
     expect(response.status).toBe(204);
 

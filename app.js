@@ -21,11 +21,12 @@ const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
+    console.log(errors.array());
     return res.status(400).json({
       success: false,
       errors: errors.array().map((error) => ({
-        field: error.param,
-        message: error.msg,
+        field: error.path, // Include the field name that caused the error
+        message: error.msg, // Include the error message
       })),
     });
   }
@@ -92,26 +93,9 @@ app.delete("/api/locations/:id", (req, res) => {
   res.status(204).send();
 });
 
-// Start the server and enable graceful shutdown
-const server = app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
-
-// Graceful shutdown
-const shutdown = () => {
-  console.log("\nShutting down gracefully...");
-  server.close(() => {
-    console.log("Server closed successfully.");
-    process.exit(0);
-  });
-
-  // Forcefully terminate if the server doesn't close within 5 seconds
-  setTimeout(() => {
-    console.error("Forcefully shutting down...");
-    process.exit(1);
-  }, 5000);
+const resetState = () => {
+  locations.length = 0;
+  idCounter = 1;
 };
 
-// Listen for termination signals
-process.on("SIGTERM", shutdown); // Triggered by `kill` command
-process.on("SIGINT", shutdown); // Triggered by Ctrl+C
+module.exports = { app, locations, resetState };

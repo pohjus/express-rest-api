@@ -8,7 +8,10 @@ export default [
     files: ["**/*.js"],
     languageOptions: {
       sourceType: "commonjs",
-      globals: globals.node,
+      globals: {
+        ...globals.node, // Include Node.js globals
+        ...globals.jest, // Include Jest globals
+      },
     },
     plugins: {
       prettier: prettierPlugin,

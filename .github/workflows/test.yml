@@ -1,40 +1,27 @@
 name: Run Jest Tests
 
 on:
-  # Trigger the workflow on push to the 'main' branch
   push:
     branches:
       - main
-
-  # Also trigger on pull requests to 'main' (ensuring PRs are tested before merging)
   pull_request:
     branches:
       - main
 
 jobs:
   test:
-    # The job will run on the latest Ubuntu environment
     runs-on: ubuntu-latest
-
     steps:
-      # Step 1: Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
-        # This step pulls the latest code from your repository
 
-      # Step 2: Set up Node.js (version 20)
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
-        # This ensures that Node.js 20 is used in the workflow
+          node-version: "20" # Or the Node.js version you're using
 
-      # Step 3: Install dependencies (run 'npm install')
       - name: Install dependencies
         run: npm install
-        # This installs all the dependencies defined in package.json
 
-      # Step 4: Run Jest tests
       - name: Run tests
         run: npm test
-        # Runs the Jest tests to ensure everything is working as expected

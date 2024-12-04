@@ -44,7 +44,7 @@ app.post(
     // Validate longitude
     body("longitude")
       .isFloat({ min: -180, max: 180 })
-      .withMessage("Longitude must be a number between -180 and 180"),
+      .withMessage("Longitude must be a number between -180 and 180 TYPO"),
   ],
   handleValidationErrors,
   (req, res) => {

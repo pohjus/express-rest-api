@@ -40,7 +40,7 @@ app.post(
     // Validate latitude
     body("latitude")
       .isFloat({ min: -90, max: 90 })
-      .withMessage("Latitude must be a number between -90 and 90"),
+      .withMessage("Latitude must be a number between -90 and 90 typo"),
     // Validate longitude
     body("longitude")
       .isFloat({ min: -180, max: 180 })

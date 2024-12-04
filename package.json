@@ -1,10 +1,10 @@
 {
   "name": "fullstack-application",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "node --watch app.js",
+    "start": "node server.js",
+    "dev": "node --watch server.js",
     "test": "jest"
   },
   "keywords": [

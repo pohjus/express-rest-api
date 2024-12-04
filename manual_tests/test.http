@@ -4,8 +4,8 @@ POST http://localhost:3000/api/locations
 Content-Type: application/json
 
 {
-  "latitude": 200,
-  "longitude": -300
+  "latitude": 50,
+  "longitude": 50
 }
 
 ### GET: Retrieve all locations

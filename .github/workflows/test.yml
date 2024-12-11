@@ -36,7 +36,12 @@ jobs:
           git config --global user.email "actions@github.com"
           git fetch origin main
           git checkout main
-          git merge --allow-unrelated-histories --no-ff ${{ github.ref_name }} -m "Auto-merged by GitHub Actions"
-          git push origin main
+          git merge --no-commit --allow-unrelated-histories ${{ github.ref_name }} || true
+          if git diff --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-merged by GitHub Actions"
+            git push origin main
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

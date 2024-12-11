@@ -4,6 +4,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "lint": "npx eslint",
     "dev": "node --watch server.js",
     "test": "jest"
   },

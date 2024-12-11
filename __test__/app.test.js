@@ -1,6 +1,6 @@
 const request = require("supertest");
 
-const { app, locations, resetState } = require("../app");
+const { app, resetState } = require("../app");
 
 describe("RESTful API Tests", () => {
   // Reset the in-memory database before each test

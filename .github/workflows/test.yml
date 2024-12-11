@@ -37,7 +37,11 @@ jobs:
           git fetch origin main
           git checkout main
           git merge --no-commit --allow-unrelated-histories ${{ github.ref_name }}
-          git commit -m "Auto-merged by GitHub Actions"
-          git push origin main
+          if git diff --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-merged by GitHub Actions"
+            git push origin main
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -94,7 +94,7 @@ app.delete("/api/locations/:id", (req, res) => {
 
 const resetState = () => {
   locations.length = 0;
-  idCounter = 1;
+  idCounter = 2;
 };
 
 module.exports = { app, locations, resetState };

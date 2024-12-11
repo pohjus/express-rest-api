@@ -6,7 +6,10 @@
     "start": "node server.js",
     "lint": "npx eslint",
     "dev": "node --watch server.js",
-    "test": "jest"
+    "test": "jest",
+    "docker-up": "docker compose up",
+    "docker-down": "docker compose down",
+    "docker-rebuild": "docker compose up --build"
   },
   "keywords": [
     "fullstack",

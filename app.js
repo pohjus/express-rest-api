@@ -101,3 +101,4 @@ const resetState = () => {
 module.exports = { app, locations, resetState };
 // Adding a new feature for testing
 // new
+// new

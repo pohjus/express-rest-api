@@ -4,7 +4,7 @@ const { body, validationResult } = require("express-validator");
 const app = express();
 const port = 3000;
 
-// In-memory database
+// In-memory database.
 const locations = [];
 let idCounter = 1;
 

@@ -3,7 +3,7 @@ name: Merge to Main if Tests Pass
 on:
   push:
     branches:
-      - "feature/*" # Adjust this pattern for your feature branch naming convention
+      - "feature/*"
 
 jobs:
   test-and-merge:
@@ -14,7 +14,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # Fetch the full history to avoid shallow clone issues
+          fetch-depth: 0
 
       # Step 2: Set up Node.js
       - name: Set up Node.js
@@ -44,6 +44,17 @@ jobs:
           else
             git commit -m "Auto-merged by GitHub Actions"
             git push origin main
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Step 6: Delete feature branch after merge
+      - name: Delete feature branch
+        if: success()
+        run: |
+          branch_name="${{ github.ref_name }}"
+          if [ "$branch_name" != "main" ]; then
+            git push origin --delete "$branch_name" || echo "Branch deletion failed"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

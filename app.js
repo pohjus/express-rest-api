@@ -1,5 +1,6 @@
 const express = require("express");
 const { body, validationResult } = require("express-validator");
+const path = require("path");
 
 const app = express();
 
@@ -10,6 +11,8 @@ let idCounter = 1;
 
 // Middleware to parse JSON
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, "dist")));
 
 /**
  * Handle validation errors and return a structured response.
@@ -99,10 +102,3 @@ const resetState = () => {
 };
 
 module.exports = { app, locations, resetState };
-// Adding a new feature for testing
-// new
-// new
-// New test change
-// New test change
-// New
-// New

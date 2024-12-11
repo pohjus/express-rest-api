@@ -6,7 +6,7 @@ const port = 3000;
 
 // In-memory database.
 const locations = [];
-let idCounter = 1;
+let idCounter = 2;
 
 // Middleware to parse JSON
 app.use(express.json());

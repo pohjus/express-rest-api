@@ -41,7 +41,7 @@ jobs:
           branch_name="${{ github.ref }}"
           branch_name=${branch_name//refs\/heads\//}  # Remove 'refs/heads/' part
           echo "Merging branch $branch_name into main..."
-          git merge "$branch_name" || exit 1
+          git merge "$branch_name" --no-ff || exit 1
           if git diff --quiet; then
             echo "No changes to commit; merge might have already occurred."
           else

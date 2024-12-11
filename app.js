@@ -99,3 +99,4 @@ const resetState = () => {
 };
 
 module.exports = { app, locations, resetState };
+// New feature code

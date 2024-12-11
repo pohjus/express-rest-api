@@ -6,7 +6,7 @@ const port = 3000;
 
 // In-memory database.
 const locations = [];
-// Counter starts from 1.
+// Counter starts from 1. Yes.
 let idCounter = 1;
 
 // Middleware to parse JSON

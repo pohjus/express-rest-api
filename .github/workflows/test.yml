@@ -38,7 +38,8 @@ jobs:
           git config --global user.email "actions@github.com"
           git fetch origin main
           git checkout main
-          branch_name="${{ github.event.ref#refs/heads/ }}"
+          branch_name="${{ github.ref }}"
+          branch_name=${branch_name//refs\/heads\//}  # Remove 'refs/heads/' part
           echo "Merging branch $branch_name into main..."
           git merge "$branch_name" || exit 1
           if git diff --quiet; then
@@ -54,7 +55,8 @@ jobs:
       - name: Delete feature branch
         if: success()
         run: |
-          branch_name="${{ github.event.ref#refs/heads/ }}"
+          branch_name="${{ github.ref }}"
+          branch_name=${branch_name//refs\/heads\//}  # Remove 'refs/heads/' part
           if [ "$branch_name" != "main" ]; then
             echo "Deleting branch $branch_name..."
             git push origin --delete "$branch_name" || echo "Branch deletion failed"

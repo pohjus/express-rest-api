@@ -184,3 +184,5 @@ Contributions are welcome! Please follow these steps:
 ---
 
 Happy Coding! 🚀
+
+Regards, Jussi

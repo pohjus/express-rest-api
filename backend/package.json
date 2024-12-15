@@ -5,13 +5,8 @@
   "scripts": {
     "start": "node server.js",
     "lint": "npx eslint",
-    "build:frontend": "cd frontend && npm run build",
-    "dev:backend": "node --watch server.js",
-    "dev:frontend": "cd frontend && npm run dev",
-    "test": "jest",
-    "docker-up": "docker compose up",
-    "docker-down": "docker compose down",
-    "docker-rebuild": "docker compose up --build"
+    "dev": "node --watch server.js",
+    "test": "jest"
   },
   "keywords": [
     "fullstack",

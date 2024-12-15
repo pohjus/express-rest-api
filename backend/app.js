@@ -15,7 +15,7 @@ let idCounter = 1;
 // Middleware to parse JSON
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "frontend/dist")));
+app.use(express.static(path.join(__dirname, "public")));
 
 /**
  * Handle validation errors and return a structured response.

@@ -1,20 +1,45 @@
-# Use an official Node.js runtime as the base image
-FROM node:20-alpine
+# Stage 1: Build the frontend
+FROM node:20 AS frontend-builder
 
-# Set the working directory inside the container
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
+# Copy root package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
+# Copy frontend package.json
+COPY frontend/package*.json frontend/
 
-# Copy the rest of the application code to the container
-COPY . .
+# Install dependencies for the frontend workspace using npm ci
+RUN npm ci --workspace=frontend
 
-# Expose the application's port
+# Copy frontend source code
+COPY frontend/ frontend/
+
+# Build the frontend for production
+RUN npm run build --workspace=frontend
+
+# Stage 2: Build the backend and serve the frontend
+FROM node:20
+
+WORKDIR /app
+
+# Copy root package.json and package-lock.json
+COPY package*.json ./
+
+# Copy backend package.json
+COPY backend/package*.json backend/
+
+# Install dependencies for the backend workspace using npm ci
+RUN npm ci --omit=dev --workspace=backend
+
+# Copy backend source code
+COPY backend/ backend/
+
+# Copy the built frontend assets from the first stage
+COPY --from=frontend-builder /app/frontend/dist backend/public
+
+# Expose the backend port
 EXPOSE 3000
 
-# Start the application
-CMD ["npm", "start"]
+# Start the backend server
+CMD ["npm", "start", "--workspace=backend"]

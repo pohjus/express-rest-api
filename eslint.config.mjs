@@ -5,6 +5,9 @@ import prettierConfig from "eslint-config-prettier";
 
 export default [
   {
+    ignores: ["frontend/**"], // Explicitly ignore dist folder
+  },
+  {
     files: ["**/*.js"],
     languageOptions: {
       sourceType: "commonjs",

@@ -1,0 +1,25 @@
+FROM node:20
+
+WORKDIR /app
+
+ENV NODE_ENV=development
+
+# Copy workspace package files
+COPY package*.json ./
+COPY frontend/package*.json frontend/
+COPY backend/package*.json backend/
+
+# Install dependencies for all workspaces
+# RUN npm install --legacy-peer-deps --include=dev
+
+RUN npm install
+
+
+# Copy the rest of the application code
+COPY frontend/ frontend/
+COPY backend/ backend/
+
+EXPOSE 3000
+EXPOSE 5173
+
+CMD ["npm", "start"]

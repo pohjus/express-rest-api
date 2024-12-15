@@ -1,8 +1,11 @@
 const express = require("express");
 const { body, validationResult } = require("express-validator");
 const path = require("path");
+const cors = require("cors");
 
 const app = express();
+
+app.use(cors());
 
 // In-memory database.
 const locations = [];
@@ -12,7 +15,7 @@ let idCounter = 1;
 // Middleware to parse JSON
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "dist")));
+app.use(express.static(path.join(__dirname, "frontend/dist")));
 
 /**
  * Handle validation errors and return a structured response.

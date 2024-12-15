@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node server.js",
     "lint": "npx eslint",
-    "dev": "node --watch server.js",
+    "build:frontend": "cd frontend && npm run build",
+    "dev:backend": "node --watch server.js",
+    "dev:frontend": "cd frontend && npm run dev",
     "test": "jest",
     "docker-up": "docker compose up",
     "docker-down": "docker compose down",
@@ -38,6 +40,7 @@
   },
   "description": "A full-stack application demonstrating the software development lifecycle with React, Node.js, Express, SQLite3, Docker, and CI/CD using GitHub Actions, deployed on Render.",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.21.1",
     "express-validator": "^7.2.0"
   }

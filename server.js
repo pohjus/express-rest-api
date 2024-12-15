@@ -5,6 +5,7 @@ const port = 3000;
 const populateInitialLocations = () => {
   locations.push(
     { id: 1, latitude: 40.712776, longitude: -74.005974 }, // New York City
+    // eslint-disable-next-line prettier/prettier
     { id: 2, latitude: 34.052235, longitude: -118.243683 } // Los Angeles
   );
   console.log("Initial locations populated:", locations);

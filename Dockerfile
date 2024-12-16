@@ -1,5 +1,5 @@
 # Stage 1: Build the frontend
-FROM node:20-alpine AS frontend-builder
+FROM node:20 AS frontend-builder
 
 WORKDIR /app
 
@@ -19,7 +19,7 @@ COPY frontend/ frontend/
 RUN npm run build --workspace=frontend
 
 # Stage 2: Build the backend and serve the frontend
-FROM node:20-alpine
+FROM node:20
 
 WORKDIR /app
 

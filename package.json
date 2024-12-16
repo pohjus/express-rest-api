@@ -12,11 +12,11 @@
     "lint": "npx concurrently \"npm run lint-frontend\" \"npm run lint-backend\"",
     "test": "cd backend && npm run test",
     "start": "npx concurrently \"npm run start-frontend\" \"npm run start-backend\"",
-    "start-frontend": "npm run dev --workspace=frontend",
+    "start-frontend": "VITE_API_URL=http://localhost:3000 npm run dev --workspace=frontend",
     "start-backend": "npm run dev --workspace=backend",
-    "dev": "docker compose -f dev.yml up --build",
-    "prod": "docker compose -f prod.yml up --build",
-    "down": "docker compose down --remove-orphans && docker system prune -f --volumes"
+    "docker-dev": "docker compose -f dev.yml up --build",
+    "docker-prod": "docker compose -f prod.yml up --build",
+    "docker-down": "docker compose down --remove-orphans && docker system prune -f --volumes"
   },
   "devDependencies": {
     "concurrently": "^9.1.0"

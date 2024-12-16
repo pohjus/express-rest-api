@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: express-rest-api
+    env: docker
+    dockerfilePath: ./Dockerfile # Path to your production Dockerfile
+    dockerComposeOverrideFile: ./prod.yml # Path to your production Compose file
+    autoDeploy: true
+    buildCommand: docker compose -f prod.yml build
+    startCommand: docker compose -f prod.yml up
+    healthCheckPath: /health # Optional: Path to health check endpoint
+    envVars:
+      - key: NODE_ENV
+        value: production

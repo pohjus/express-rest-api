@@ -1,13 +1,20 @@
 services:
   app:
+    # Build the Docker image using the specified Dockerfile and context
     build:
-      context: .
-      dockerfile: Dockerfile.dev
+      context: . # Use the current directory as the build context
+      dockerfile: Dockerfile.dev # Specify the Dockerfile for development
+
+    # Set environment variables inside the running container
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=development # Run the application in development mode
+
+    # Map container ports to the host
     ports:
-      - "3000:3000"
-      - "5173:5173"
+      - "3000:3000" # Map the backend service to port 3000 on the host
+      - "5173:5173" # Map the frontend development server to port 5173 on the host
+
+    # Mount volumes for live development
     volumes:
-      - .:/app
-      - /app/node_modules
+      - .:/app # Mount the current directory to /app in the container
+      - /app/node_modules # Ensures that the node_modules directory in the container remains container-specific, even though the rest of /app is mounted from the host.
